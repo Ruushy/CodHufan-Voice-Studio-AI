@@ -1,0 +1,171 @@
+{% extends "voice_app/base.html" %}
+{% block title %}Taariikhda Shaqooyinka — CodHufan{% endblock %}
+
+{% block extra_styles %}
+<style>
+  .jobs-page { padding: 80px 0; }
+  .page-header { margin-bottom: 40px; }
+  .page-header h1 {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+  .page-header p { color: var(--text-secondary); font-size: 14px; }
+
+  .jobs-table-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    text-align: left;
+    padding: 14px 20px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-secondary);
+    vertical-align: middle;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .job-filename {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 14px;
+    max-width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .job-actions { display: flex; gap: 8px; }
+  .btn-xs {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s;
+    border: none;
+  }
+  .btn-xs-accent { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(0,212,255,0.2); }
+  .btn-xs-accent:hover { background: var(--accent); color: #000; }
+  .btn-xs-green { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,229,160,0.2); }
+  .btn-xs-green:hover { background: var(--green); color: #000; }
+  .btn-xs-muted { background: rgba(255,255,255,0.04); color: var(--text-secondary); border: 1px solid var(--border); }
+  .btn-xs-muted:hover { color: var(--text-primary); border-color: var(--border-bright); }
+
+  .empty-state {
+    padding: 80px 40px;
+    text-align: center;
+    color: var(--text-secondary);
+  }
+  .empty-state .icon { font-size: 40px; margin-bottom: 16px; opacity: 0.4; }
+  .empty-state h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="jobs-page">
+  <div class="container">
+    <div class="page-header">
+      <div class="section-label">Taariikhda Hawlgalka</div>
+      <h1>Dhammaan Shaqooyinka</h1>
+      <p>{{ jobs|length }} shaqo ayaa la diiwaan geliyay</p>
+    </div>
+
+    <div class="jobs-table-wrap">
+      {% if jobs %}
+      <table>
+        <thead>
+          <tr>
+            <th>Faylka</th>
+            <th>Xaaladda</th>
+            <th>Muddada</th>
+            <th>Cabbirka</th>
+            <th>Taariikhda</th>
+            <th>Ficilada</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for job in jobs %}
+          <tr>
+            <td>
+              <div class="job-filename" title="{{ job.original_filename }}">
+                {{ job.original_filename }}
+              </div>
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);margin-top:3px;">
+                {{ job.id|truncatechars:20 }}
+              </div>
+            </td>
+            <td>
+              {% if job.status == 'complete' %}
+                <span class="badge badge-green">✓ Dhammaatay</span>
+              {% elif job.status == 'processing' %}
+                <span class="badge badge-accent">⟳ Waa La Hawlgalinayaa</span>
+              {% elif job.status == 'failed' %}
+                <span class="badge badge-red">✗ Wuu Fashilmay</span>
+              {% else %}
+                <span class="badge badge-muted">Sugaaya</span>
+              {% endif %}
+            </td>
+            <td>{{ job.duration_formatted }}</td>
+            <td>
+              {% if job.file_size_mb %}
+                {{ job.file_size_mb|floatformat:1 }} MB
+              {% else %}—{% endif %}
+            </td>
+            <td>{{ job.created_at|date:"M d, H:i" }}</td>
+            <td>
+              <div class="job-actions">
+                {% if job.status == 'complete' %}
+                  <a href="/job/{{ job.id }}/result/" class="btn-xs btn-xs-accent">▶ Natiijada</a>
+                  <a href="/job/{{ job.id }}/download/" class="btn-xs btn-xs-green">⬇ Soo Dejiso</a>
+                {% elif job.status == 'processing' or job.status == 'pending' %}
+                  <a href="/job/{{ job.id }}/" class="btn-xs btn-xs-muted">⟳ Xaaladda</a>
+                {% else %}
+                  <a href="/job/{{ job.id }}/" class="btn-xs btn-xs-muted">Arag</a>
+                {% endif %}
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <div class="empty-state">
+        <div class="icon">🎙</div>
+        <h3>Wali shaqo ma jirto</h3>
+        <p>Soo geli muuqaal ama cod si aad u bilowdo.</p>
+        <a href="/" class="btn btn-primary" style="margin-top:20px;">+ Kor u Geli Faylo</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% comment %}
+Partial template for the pipeline stage list.
+Used in processing.html (server-side initial render).
+{% endcomment %}
+{% with p=progress %}
+<li class="stage-item {% if p >= 20 %}done{% elif p >= 0 %}active{% endif %}">
+  <div class="stage-dot {% if p >= 20 %}done{% elif p >= 0 %}active{% endif %}">
+    {% if p >= 20 %}✓{% else %}📥{% endif %}
+  </div>
+  <span class="stage-label">Extracting audio</span>
+  {% if p >= 0 and p < 20 %}<span class="stage-method">Processing…</span>{% endif %}
+  {% if p >= 20 %}<span class="stage-method">✓</span>{% endif %}
+</li>
+<li class="stage-item {% if p >= 40 %}done{% elif p >= 20 %}active{% else %}{% endif %}">
+  <div class="stage-dot {% if p >= 40 %}done{% elif p >= 20 %}active{% else %}pending{% endif %}">
+    {% if p >= 40 %}✓{% elif p >= 20 %}🎵{% else %}2{% endif %}
+  </div>
+  <span class="stage-label">Isolating voice</span>
+  {% if p >= 20 and p < 40 %}<span class="stage-method">Processing…</span>{% endif %}
+  {% if p >= 40 %}<span class="stage-method">✓</span>{% endif %}
+</li>
+<li class="stage-item {% if p >= 60 %}done{% elif p >= 40 %}active{% endif %}">
+  <div class="stage-dot {% if p >= 60 %}done{% elif p >= 40 %}active{% else %}pending{% endif %}">
+    {% if p >= 60 %}✓{% elif p >= 40 %}🔇{% else %}3{% endif %}
+  </div>
+  <span class="stage-label">Removing noise</span>
+  {% if p >= 40 and p < 60 %}<span class="stage-method">Processing…</span>{% endif %}
+  {% if p >= 60 %}<span class="stage-method">✓</span>{% endif %}
+</li>
+<li class="stage-item {% if p >= 80 %}done{% elif p >= 60 %}active{% endif %}">
+  <div class="stage-dot {% if p >= 80 %}done{% elif p >= 60 %}active{% else %}pending{% endif %}">
+    {% if p >= 80 %}✓{% elif p >= 60 %}✨{% else %}4{% endif %}
+  </div>
+  <span class="stage-label">Enhancing voice</span>
+  {% if p >= 60 and p < 80 %}<span class="stage-method">Processing…</span>{% endif %}
+  {% if p >= 80 %}<span class="stage-method">✓</span>{% endif %}
+</li>
+<li class="stage-item {% if p >= 100 %}done{% elif p >= 80 %}active{% endif %}">
+  <div class="stage-dot {% if p >= 100 %}done{% elif p >= 80 %}active{% else %}pending{% endif %}">
+    {% if p >= 100 %}✓{% elif p >= 80 %}🎛{% else %}5{% endif %}
+  </div>
+  <span class="stage-label">Mastering audio</span>
+  {% if p >= 80 and p < 100 %}<span class="stage-method">Processing…</span>{% endif %}
+  {% if p >= 100 %}<span class="stage-method">✓</span>{% endif %}
+</li>
+{% endwith %}

@@ -1,0 +1,59 @@
+# ══════════════════════════════════════════════════════════════════
+# Voice Studio AI — Python Dependencies
+# ══════════════════════════════════════════════════════════════════
+# Python 3.10+ recommended
+# Install: pip install -r requirements.txt
+# ══════════════════════════════════════════════════════════════════
+
+# ── Core Django ────────────────────────────────────────────────────
+Django>=4.2,<5.0
+Pillow>=10.0.0          # Required by Django for ImageField (optional here but good to have)
+
+# ── Audio I/O ──────────────────────────────────────────────────────
+soundfile>=0.12.1       # Read/write WAV, FLAC, OGG
+librosa>=0.10.1         # Audio analysis, HPSS voice isolation fallback
+numpy>=1.24.0           # Numerical computing
+scipy>=1.11.0           # Signal processing, filtering
+
+# ── Stage 2: Voice Isolation ───────────────────────────────────────
+# Demucs (Facebook AI) — htdemucs_ft model for vocal separation
+demucs>=4.0.0
+
+# ── Stage 3: Noise Reduction ───────────────────────────────────────
+# Option A: DeepFilterNet (neural, best quality)
+deepfilternet>=0.5.6
+
+# Option B: noisereduce (spectral subtraction, lightweight fallback)
+noisereduce>=3.0.0
+
+# ── Stage 4: Voice Enhancement ─────────────────────────────────────
+# VoiceFixer — AI voice restoration (primary)
+voicefixer>=0.1.2
+
+# Resemble Enhance — alternative enhancer (install separately if needed)
+# pip install resemble-enhance
+# resemble-enhance>=0.0.1
+
+# ── Stage 5: Mastering ─────────────────────────────────────────────
+pyloudnorm>=0.1.1       # EBU R128 loudness measurement & normalization
+
+# ── PyTorch (required by Demucs, DeepFilterNet, VoiceFixer) ───────
+# Install the correct version for your hardware:
+#
+#   CPU only:
+#     pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+#
+#   CUDA 12.1 (GPU):
+#     pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
+#
+# The line below installs CPU-only as a safe default.
+# Comment it out if you install PyTorch manually above.
+torch>=2.0.0
+torchaudio>=2.0.0
+
+# ── System Requirements (not pip-installable) ─────────────────────
+# FFmpeg must be installed on your system PATH:
+#
+#   macOS:   brew install ffmpeg
+#   Ubuntu:  sudo apt install ffmpeg
+#   Windows: https://ffmpeg.org/download.html  (add to PATH)

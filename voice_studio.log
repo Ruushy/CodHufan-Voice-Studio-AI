@@ -1,0 +1,774 @@
+[2026-03-15 04:13:41,116] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-15 04:13:49,437] WARNING django.request: Not Found: /favicon.ico
+[2026-03-15 04:15:28,954] ERROR django.request: Internal Server Error: /jobs/
+Traceback (most recent call last):
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: voice_app_processingjob
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\thali\Documents\voice_studio_ai\voice_app\views.py", line 134, in jobs_list
+    return render(request, 'voice_app/jobs.html', {'jobs': jobs})
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\base.py", line 1150, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\base.py", line 815, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\template\defaultfilters.py", line 637, in length
+    return len(value)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\query.py", line 372, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1624, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: voice_app_processingjob
+[2026-03-15 04:17:27,252] ERROR django.request: Internal Server Error: /upload/
+Traceback (most recent call last):
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: voice_app_processingjob
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "C:\Users\thali\Documents\voice_studio_ai\voice_app\views.py", line 55, in upload_file
+    job = ProcessingJob.objects.create(
+        id=job_id,
+    ...<3 lines>...
+        file_size_mb=round(uploaded_file.size / (1024 * 1024), 2),
+    )
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\query.py", line 669, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\base.py", line 874, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\base.py", line 966, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, insert_fields, returning_fields, raw
+    )
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\base.py", line 1220, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\query.py", line 1918, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1925, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: voice_app_processingjob
+[2026-03-15 04:17:40,767] ERROR django.request: Internal Server Error: /upload/
+Traceback (most recent call last):
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: voice_app_processingjob
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "C:\Users\thali\Documents\voice_studio_ai\voice_app\views.py", line 55, in upload_file
+    job = ProcessingJob.objects.create(
+        id=job_id,
+    ...<3 lines>...
+        file_size_mb=round(uploaded_file.size / (1024 * 1024), 2),
+    )
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\query.py", line 669, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\base.py", line 874, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\base.py", line 966, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, insert_fields, returning_fields, raw
+    )
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\base.py", line 1220, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\query.py", line 1918, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1925, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\thali\Documents\voice_studio_ai\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 359, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: voice_app_processingjob
+[2026-03-15 04:20:21,245] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-15 04:20:41,681] INFO audio_pipeline: === Starting pipeline for job fd562b2b-2f73-4db4-9253-45742d940264 ===
+[2026-03-15 04:20:41,681] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\fd562b2b-2f73-4db4-9253-45742d940264.m4a
+[2026-03-15 04:20:42,246] INFO audio_pipeline: [fd562b2b-2f73-4db4-9253-45742d940264] Stage 1: Extracting audio (5%) 
+[2026-03-15 04:20:42,926] INFO audio_pipeline: Extracting audio from: fd562b2b-2f73-4db4-9253-45742d940264.m4a
+[2026-03-15 04:21:11,517] INFO audio_pipeline: Audio extracted successfully. Duration: 28.0s, Size: 2.4MB
+[2026-03-15 04:21:11,517] INFO audio_pipeline: [fd562b2b-2f73-4db4-9253-45742d940264] Stage 1: Extracting audio (18%) Duration: 28.0s
+[2026-03-15 04:21:11,772] INFO audio_pipeline: [fd562b2b-2f73-4db4-9253-45742d940264] Stage 2: Isolating voice (20%) 
+[2026-03-15 04:21:12,106] INFO audio_pipeline: Isolating voice from: fd562b2b-2f73-4db4-9253-45742d940264_s1_raw.wav
+[2026-03-15 04:21:12,113] WARNING audio_pipeline: Demucs failed: Demucs not installed. Trying librosa fallback...
+[2026-03-15 04:21:12,114] WARNING audio_pipeline: Librosa isolation failed. Using input audio as-is for next stage.
+[2026-03-15 04:21:12,150] INFO audio_pipeline: [fd562b2b-2f73-4db4-9253-45742d940264] Stage 2: Isolating voice (38%) Method: passthrough
+[2026-03-15 04:21:12,404] INFO audio_pipeline: [fd562b2b-2f73-4db4-9253-45742d940264] Stage 3: Removing noise (40%) 
+[2026-03-15 04:21:12,550] INFO audio_pipeline: Applying noise reduction to: fd562b2b-2f73-4db4-9253-45742d940264_s2_isolated.wav
+[2026-03-15 04:21:12,551] WARNING audio_pipeline: DeepFilterNet failed: DeepFilterNet (df) not installed. Trying noisereduce...
+[2026-03-15 04:21:12,552] WARNING audio_pipeline: Noise reduction libraries unavailable. Using scipy-based filtering...
+[2026-03-15 04:21:12,553] WARNING audio_pipeline: All noise reduction methods failed. Passing through unchanged.
+[2026-03-15 04:21:12,556] INFO audio_pipeline: [fd562b2b-2f73-4db4-9253-45742d940264] Stage 3: Removing noise (58%) Method: passthrough
+[2026-03-15 04:21:12,949] INFO audio_pipeline: [fd562b2b-2f73-4db4-9253-45742d940264] Stage 4: Enhancing voice (60%) 
+[2026-03-15 04:21:13,499] INFO audio_pipeline: Enhancing voice quality: fd562b2b-2f73-4db4-9253-45742d940264_s3_denoised.wav
+[2026-03-15 04:21:13,502] WARNING audio_pipeline: VoiceFixer failed: VoiceFixer not installed. Trying Resemble Enhance...
+[2026-03-15 04:21:13,503] WARNING audio_pipeline: ML enhancers unavailable. Applying parametric EQ boost...
+[2026-03-15 04:21:13,505] WARNING audio_pipeline: All enhancement methods failed. Passing through.
+[2026-03-15 04:21:13,599] INFO audio_pipeline: [fd562b2b-2f73-4db4-9253-45742d940264] Stage 4: Enhancing voice (78%) Method: passthrough
+[2026-03-15 04:21:13,929] INFO audio_pipeline: [fd562b2b-2f73-4db4-9253-45742d940264] Stage 5: Mastering audio (80%) 
+[2026-03-15 04:21:14,151] INFO audio_pipeline: Mastering audio: fd562b2b-2f73-4db4-9253-45742d940264_s4_enhanced.wav
+[2026-03-15 04:21:14,153] WARNING audio_pipeline: pyloudnorm failed: pyloudnorm not installed. Trying scipy mastering...
+[2026-03-15 04:21:14,155] WARNING audio_pipeline: Mastering failed. Copying enhanced audio as final output.
+[2026-03-15 04:21:14,168] INFO audio_pipeline: [fd562b2b-2f73-4db4-9253-45742d940264] Stage 5: Mastering audio (93%) Method: passthrough
+[2026-03-15 04:21:14,505] INFO audio_pipeline: [fd562b2b-2f73-4db4-9253-45742d940264] Stage 6: Finalizing (97%) 
+[2026-03-15 04:21:14,896] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\fd562b2b-2f73-4db4-9253-45742d940264\fd562b2b-2f73-4db4-9253-45742d940264_s1_raw.wav
+[2026-03-15 04:21:14,898] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\fd562b2b-2f73-4db4-9253-45742d940264\fd562b2b-2f73-4db4-9253-45742d940264_s2_isolated.wav
+[2026-03-15 04:21:14,899] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\fd562b2b-2f73-4db4-9253-45742d940264\fd562b2b-2f73-4db4-9253-45742d940264_s3_denoised.wav
+[2026-03-15 04:21:14,900] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\fd562b2b-2f73-4db4-9253-45742d940264\fd562b2b-2f73-4db4-9253-45742d940264_s4_enhanced.wav
+[2026-03-15 04:21:14,901] INFO audio_pipeline: === Pipeline complete in 33.2s ===
+[2026-03-15 04:21:25,346] WARNING django.request: Not Found: /favicon.ico
+[2026-03-15 04:27:13,579] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-15 04:27:30,704] INFO audio_pipeline: === Starting pipeline for job 9a2b5831-75a5-431d-944c-fac0bdaefda2 ===
+[2026-03-15 04:27:30,704] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\9a2b5831-75a5-431d-944c-fac0bdaefda2.m4a
+[2026-03-15 04:27:30,755] INFO audio_pipeline: [9a2b5831-75a5-431d-944c-fac0bdaefda2] Stage 1: Extracting audio (5%) 
+[2026-03-15 04:27:30,882] INFO audio_pipeline: Extracting audio from: 9a2b5831-75a5-431d-944c-fac0bdaefda2.m4a
+[2026-03-15 04:27:31,000] ERROR audio_pipeline: === Pipeline FAILED: FFmpeg not found. Please install FFmpeg: https://ffmpeg.org/download.html ===
+[2026-03-15 04:49:49,853] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-15 04:50:13,060] INFO audio_pipeline: === Starting pipeline for job e7e12865-c14b-4048-9e79-a57a4de71bb0 ===
+[2026-03-15 04:50:13,060] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\e7e12865-c14b-4048-9e79-a57a4de71bb0.m4a
+[2026-03-15 04:50:13,266] INFO audio_pipeline: [e7e12865-c14b-4048-9e79-a57a4de71bb0] Stage 1: Extracting audio (5%) 
+[2026-03-15 04:50:13,946] INFO audio_pipeline: Using FFmpeg at: C:\ffmpeg\bin\ffmpeg.EXE
+[2026-03-15 04:50:13,987] INFO audio_pipeline: Extracting audio from: e7e12865-c14b-4048-9e79-a57a4de71bb0.m4a
+[2026-03-15 04:50:34,674] INFO audio_pipeline: Audio extracted. Duration: 28.0s
+[2026-03-15 04:50:34,675] INFO audio_pipeline: [e7e12865-c14b-4048-9e79-a57a4de71bb0] Stage 1: Extracting audio (18%) Duration: 28.0s
+[2026-03-15 04:50:35,193] INFO audio_pipeline: [e7e12865-c14b-4048-9e79-a57a4de71bb0] Stage 2: Isolating voice (20%) 
+[2026-03-15 04:50:35,341] INFO audio_pipeline: Isolating voice from: e7e12865-c14b-4048-9e79-a57a4de71bb0_s1_raw.wav
+[2026-03-15 04:50:53,950] WARNING audio_pipeline: Demucs failed: Demucs not installed. Trying librosa fallback...
+[2026-03-15 04:50:54,188] INFO audio_pipeline: Running librosa HPSS voice isolation
+[2026-03-15 04:54:37,180] INFO audio_pipeline: Librosa HPSS isolation complete
+[2026-03-15 04:54:37,181] INFO audio_pipeline: [e7e12865-c14b-4048-9e79-a57a4de71bb0] Stage 2: Isolating voice (38%) Method: librosa_hpss
+[2026-03-15 04:54:37,548] INFO audio_pipeline: [e7e12865-c14b-4048-9e79-a57a4de71bb0] Stage 3: Removing noise (40%) 
+[2026-03-15 04:54:37,759] INFO audio_pipeline: Applying noise reduction to: e7e12865-c14b-4048-9e79-a57a4de71bb0_s2_isolated.wav
+[2026-03-15 04:54:37,760] WARNING audio_pipeline: DeepFilterNet failed: DeepFilterNet (df) not installed. Trying noisereduce...
+[2026-03-15 04:54:37,762] WARNING audio_pipeline: Noise reduction libraries unavailable. Using scipy-based filtering...
+[2026-03-15 04:54:37,762] INFO audio_pipeline: Running scipy basic filtering
+[2026-03-15 04:54:38,416] INFO audio_pipeline: scipy basic filtering complete
+[2026-03-15 04:54:38,442] INFO audio_pipeline: [e7e12865-c14b-4048-9e79-a57a4de71bb0] Stage 3: Removing noise (58%) Method: scipy_basic_filter
+[2026-03-15 04:54:38,941] INFO audio_pipeline: [e7e12865-c14b-4048-9e79-a57a4de71bb0] Stage 4: Enhancing voice (60%) 
+[2026-03-15 04:54:39,178] INFO audio_pipeline: Enhancing voice quality: e7e12865-c14b-4048-9e79-a57a4de71bb0_s3_denoised.wav
+[2026-03-15 04:57:25,149] INFO audio_pipeline: Running VoiceFixer (mode 0) on cpu
+[2026-03-15 05:01:26,571] INFO audio_pipeline: VoiceFixer enhancement complete
+[2026-03-15 05:01:26,730] INFO audio_pipeline: [e7e12865-c14b-4048-9e79-a57a4de71bb0] Stage 4: Enhancing voice (78%) Method: voicefixer_mode0
+[2026-03-15 05:01:28,359] INFO audio_pipeline: [e7e12865-c14b-4048-9e79-a57a4de71bb0] Stage 5: Mastering audio (80%) 
+[2026-03-15 05:01:29,706] INFO audio_pipeline: Mastering audio: e7e12865-c14b-4048-9e79-a57a4de71bb0_s4_enhanced.wav
+[2026-03-15 05:01:30,486] WARNING audio_pipeline: pyloudnorm failed: pyloudnorm not installed. Trying scipy mastering...
+[2026-03-15 05:01:30,488] INFO audio_pipeline: Applying scipy basic mastering
+[2026-03-15 05:01:42,040] INFO audio_pipeline: scipy basic mastering complete
+[2026-03-15 05:01:42,045] INFO audio_pipeline: [e7e12865-c14b-4048-9e79-a57a4de71bb0] Stage 5: Mastering audio (93%) Method: rms_normalization
+[2026-03-15 05:01:44,589] INFO audio_pipeline: [e7e12865-c14b-4048-9e79-a57a4de71bb0] Stage 6: Finalizing (97%) 
+[2026-03-15 05:01:47,271] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\e7e12865-c14b-4048-9e79-a57a4de71bb0\e7e12865-c14b-4048-9e79-a57a4de71bb0_s1_raw.wav
+[2026-03-15 05:01:48,229] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\e7e12865-c14b-4048-9e79-a57a4de71bb0\e7e12865-c14b-4048-9e79-a57a4de71bb0_s2_isolated.wav
+[2026-03-15 05:01:49,166] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\e7e12865-c14b-4048-9e79-a57a4de71bb0\e7e12865-c14b-4048-9e79-a57a4de71bb0_s3_denoised.wav
+[2026-03-15 05:01:50,212] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\e7e12865-c14b-4048-9e79-a57a4de71bb0\e7e12865-c14b-4048-9e79-a57a4de71bb0_s4_enhanced.wav
+[2026-03-15 05:01:51,780] INFO audio_pipeline: === Pipeline complete in 697.7s ===
+[2026-03-15 05:03:23,039] WARNING django.request: Not Found: /favicon.ico
+[2026-03-15 22:57:59,281] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-15 22:58:25,290] WARNING django.request: Not Found: /favicon.ico
+[2026-03-15 22:58:34,156] INFO audio_pipeline: === Starting pipeline for job 06414d2c-364c-496d-beb3-946a10c3b213 ===
+[2026-03-15 22:58:34,158] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\06414d2c-364c-496d-beb3-946a10c3b213.m4a
+[2026-03-15 22:58:34,674] INFO audio_pipeline: [06414d2c-364c-496d-beb3-946a10c3b213] Stage 1: Extracting audio (5%) 
+[2026-03-15 22:58:35,593] INFO audio_pipeline: Using FFmpeg at: C:\ffmpeg\bin\ffmpeg.EXE
+[2026-03-15 22:58:35,594] INFO audio_pipeline: Extracting audio from: 06414d2c-364c-496d-beb3-946a10c3b213.m4a
+[2026-03-15 22:59:10,906] INFO audio_pipeline: Audio extracted. Duration: 28.0s
+[2026-03-15 22:59:10,907] INFO audio_pipeline: [06414d2c-364c-496d-beb3-946a10c3b213] Stage 1: Extracting audio (18%) Duration: 28.0s
+[2026-03-15 22:59:11,326] INFO audio_pipeline: [06414d2c-364c-496d-beb3-946a10c3b213] Stage 2: Isolating voice (20%) 
+[2026-03-15 22:59:11,527] INFO audio_pipeline: Isolating voice from: 06414d2c-364c-496d-beb3-946a10c3b213_s1_raw.wav
+[2026-03-15 23:00:31,586] INFO audio_pipeline: Running Demucs on cpu
+[2026-03-15 23:57:54,347] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-15 23:58:11,003] INFO audio_pipeline: === Starting pipeline for job 6e89f077-733c-47bb-aa2f-f01aeda47a9d ===
+[2026-03-15 23:58:11,003] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\6e89f077-733c-47bb-aa2f-f01aeda47a9d.m4a
+[2026-03-15 23:58:11,059] INFO audio_pipeline: [6e89f077-733c-47bb-aa2f-f01aeda47a9d] Stage 1: Extracting audio (5%) 
+[2026-03-15 23:58:11,248] INFO audio_pipeline: Using FFmpeg at: C:\ffmpeg\bin\ffmpeg.EXE
+[2026-03-15 23:58:11,249] INFO audio_pipeline: Extracting audio from: 6e89f077-733c-47bb-aa2f-f01aeda47a9d.m4a
+[2026-03-15 23:58:29,419] INFO audio_pipeline: Audio extracted. Duration: 28.0s
+[2026-03-15 23:58:29,421] INFO audio_pipeline: [6e89f077-733c-47bb-aa2f-f01aeda47a9d] Stage 1: Extracting audio (18%) Duration: 28.0s
+[2026-03-15 23:58:29,911] INFO audio_pipeline: [6e89f077-733c-47bb-aa2f-f01aeda47a9d] Stage 2: Isolating voice (20%) 
+[2026-03-15 23:58:30,218] INFO audio_pipeline: Isolating voice from: 6e89f077-733c-47bb-aa2f-f01aeda47a9d_s1_raw.wav
+[2026-03-15 23:58:32,889] INFO audio_pipeline: Running fast librosa HPSS
+[2026-03-16 00:00:55,943] INFO audio_pipeline: Librosa HPSS done
+[2026-03-16 00:00:55,945] INFO audio_pipeline: [6e89f077-733c-47bb-aa2f-f01aeda47a9d] Stage 2: Isolating voice (38%) Method: librosa_hpss
+[2026-03-16 00:00:56,190] INFO audio_pipeline: [6e89f077-733c-47bb-aa2f-f01aeda47a9d] Stage 3: Removing noise (40%) 
+[2026-03-16 00:00:56,358] INFO audio_pipeline: Applying noise reduction to: 6e89f077-733c-47bb-aa2f-f01aeda47a9d_s2_isolated.wav
+[2026-03-16 00:00:56,361] WARNING audio_pipeline: DeepFilterNet failed: DeepFilterNet (df) not installed. Trying noisereduce...
+[2026-03-16 00:01:05,203] INFO audio_pipeline: Running noisereduce spectral subtraction
+[2026-03-16 00:01:08,042] INFO audio_pipeline: noisereduce spectral subtraction complete
+[2026-03-16 00:01:08,045] INFO audio_pipeline: [6e89f077-733c-47bb-aa2f-f01aeda47a9d] Stage 3: Removing noise (58%) Method: noisereduce_spectral
+[2026-03-16 00:01:08,579] INFO audio_pipeline: [6e89f077-733c-47bb-aa2f-f01aeda47a9d] Stage 4: Enhancing voice (60%) 
+[2026-03-16 00:01:09,127] INFO audio_pipeline: Enhancing voice quality: 6e89f077-733c-47bb-aa2f-f01aeda47a9d_s3_denoised.wav
+[2026-03-16 00:01:24,478] INFO audio_pipeline: Running VoiceFixer (mode 0) on cpu
+[2026-03-16 00:04:17,359] INFO audio_pipeline: VoiceFixer enhancement complete
+[2026-03-16 00:04:17,363] INFO audio_pipeline: [6e89f077-733c-47bb-aa2f-f01aeda47a9d] Stage 4: Enhancing voice (78%) Method: voicefixer_mode0
+[2026-03-16 00:04:18,452] INFO audio_pipeline: [6e89f077-733c-47bb-aa2f-f01aeda47a9d] Stage 5: Mastering audio (80%) 
+[2026-03-16 00:04:19,306] INFO audio_pipeline: Mastering audio: 6e89f077-733c-47bb-aa2f-f01aeda47a9d_s4_enhanced.wav
+[2026-03-16 00:04:19,777] INFO audio_pipeline: Applying EBU R128 mastering
+[2026-03-16 00:04:21,485] INFO audio_pipeline: Input loudness: -28.2 LUFS
+[2026-03-16 00:04:33,417] INFO audio_pipeline: Output loudness: -22.3 LUFS
+[2026-03-16 00:04:34,945] INFO audio_pipeline: EBU R128 mastering complete
+[2026-03-16 00:04:34,949] INFO audio_pipeline: [6e89f077-733c-47bb-aa2f-f01aeda47a9d] Stage 5: Mastering audio (93%) Method: ebu_r128_mastering
+[2026-03-16 00:04:36,084] INFO audio_pipeline: [6e89f077-733c-47bb-aa2f-f01aeda47a9d] Stage 6: Finalizing (97%) 
+[2026-03-16 00:04:37,184] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\6e89f077-733c-47bb-aa2f-f01aeda47a9d\6e89f077-733c-47bb-aa2f-f01aeda47a9d_s1_raw.wav
+[2026-03-16 00:04:37,186] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\6e89f077-733c-47bb-aa2f-f01aeda47a9d\6e89f077-733c-47bb-aa2f-f01aeda47a9d_s2_isolated.wav
+[2026-03-16 00:04:37,187] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\6e89f077-733c-47bb-aa2f-f01aeda47a9d\6e89f077-733c-47bb-aa2f-f01aeda47a9d_s3_denoised.wav
+[2026-03-16 00:04:39,473] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\6e89f077-733c-47bb-aa2f-f01aeda47a9d\6e89f077-733c-47bb-aa2f-f01aeda47a9d_s4_enhanced.wav
+[2026-03-16 00:04:39,479] INFO audio_pipeline: === Pipeline complete in 388.5s ===
+[2026-03-16 00:05:28,344] WARNING django.request: Not Found: /favicon.ico
+[2026-03-16 00:19:51,180] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-16 00:20:12,949] INFO audio_pipeline: === Starting pipeline for job b8477b67-f66f-4998-af5f-c52dd275d4bf ===
+[2026-03-16 00:20:12,950] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\b8477b67-f66f-4998-af5f-c52dd275d4bf.m4a
+[2026-03-16 00:20:13,067] INFO audio_pipeline: [b8477b67-f66f-4998-af5f-c52dd275d4bf] Stage 1: Extracting audio (5%) 
+[2026-03-16 00:20:13,720] INFO audio_pipeline: Using FFmpeg at: C:\ffmpeg\bin\ffmpeg.EXE
+[2026-03-16 00:20:13,720] INFO audio_pipeline: Extracting audio from: b8477b67-f66f-4998-af5f-c52dd275d4bf.m4a
+[2026-03-16 00:20:29,507] INFO audio_pipeline: Audio extracted. Duration: 28.0s
+[2026-03-16 00:20:29,507] INFO audio_pipeline: [b8477b67-f66f-4998-af5f-c52dd275d4bf] Stage 1: Extracting audio (18%) Duration: 28.0s
+[2026-03-16 00:20:29,905] INFO audio_pipeline: [b8477b67-f66f-4998-af5f-c52dd275d4bf] Stage 2: Isolating voice (20%) 
+[2026-03-16 00:20:30,421] INFO audio_pipeline: Isolating voice from: b8477b67-f66f-4998-af5f-c52dd275d4bf_s1_raw.wav
+[2026-03-16 00:20:32,557] INFO audio_pipeline: Running fast librosa HPSS
+[2026-03-16 00:21:32,216] INFO audio_pipeline: Librosa HPSS done
+[2026-03-16 00:21:32,225] INFO audio_pipeline: [b8477b67-f66f-4998-af5f-c52dd275d4bf] Stage 2: Isolating voice (38%) Method: librosa_hpss
+[2026-03-16 00:21:32,457] INFO audio_pipeline: [b8477b67-f66f-4998-af5f-c52dd275d4bf] Stage 3: Removing noise (40%) 
+[2026-03-16 00:21:32,857] INFO audio_pipeline: Applying noise reduction to: b8477b67-f66f-4998-af5f-c52dd275d4bf_s2_isolated.wav
+[2026-03-16 00:21:32,863] WARNING audio_pipeline: DeepFilterNet failed: DeepFilterNet (df) not installed. Trying noisereduce...
+[2026-03-16 00:21:53,923] INFO audio_pipeline: Running noisereduce spectral subtraction
+[2026-03-16 00:21:56,411] INFO audio_pipeline: noisereduce spectral subtraction complete
+[2026-03-16 00:21:56,413] INFO audio_pipeline: [b8477b67-f66f-4998-af5f-c52dd275d4bf] Stage 3: Removing noise (58%) Method: noisereduce_spectral
+[2026-03-16 00:21:56,769] INFO audio_pipeline: [b8477b67-f66f-4998-af5f-c52dd275d4bf] Stage 4: Enhancing voice (60%) 
+[2026-03-16 00:21:57,070] INFO audio_pipeline: Enhancing voice quality: b8477b67-f66f-4998-af5f-c52dd275d4bf_s3_denoised.wav
+[2026-03-16 00:22:02,931] INFO audio_pipeline: Running VoiceFixer (mode 0) on cpu
+[2026-03-16 00:24:05,498] INFO audio_pipeline: VoiceFixer enhancement complete
+[2026-03-16 00:24:05,498] INFO audio_pipeline: [b8477b67-f66f-4998-af5f-c52dd275d4bf] Stage 4: Enhancing voice (78%) Method: voicefixer_mode0
+[2026-03-16 00:24:05,677] INFO audio_pipeline: [b8477b67-f66f-4998-af5f-c52dd275d4bf] Stage 5: Mastering audio (80%) 
+[2026-03-16 00:24:05,821] INFO audio_pipeline: Mastering audio: b8477b67-f66f-4998-af5f-c52dd275d4bf_s4_enhanced.wav
+[2026-03-16 00:24:05,938] INFO audio_pipeline: Applying EBU R128 mastering
+[2026-03-16 00:24:06,350] INFO audio_pipeline: Input loudness: -28.2 LUFS
+[2026-03-16 00:24:06,569] INFO audio_pipeline: Output loudness: -22.3 LUFS
+[2026-03-16 00:24:07,029] INFO audio_pipeline: EBU R128 mastering complete
+[2026-03-16 00:24:07,038] INFO audio_pipeline: [b8477b67-f66f-4998-af5f-c52dd275d4bf] Stage 5: Mastering audio (93%) Method: ebu_r128_mastering
+[2026-03-16 00:24:07,267] INFO audio_pipeline: [b8477b67-f66f-4998-af5f-c52dd275d4bf] Stage 6: Finalizing (97%) 
+[2026-03-16 00:24:07,568] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\b8477b67-f66f-4998-af5f-c52dd275d4bf\b8477b67-f66f-4998-af5f-c52dd275d4bf_s1_raw.wav
+[2026-03-16 00:24:07,571] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\b8477b67-f66f-4998-af5f-c52dd275d4bf\b8477b67-f66f-4998-af5f-c52dd275d4bf_s2_isolated.wav
+[2026-03-16 00:24:07,573] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\b8477b67-f66f-4998-af5f-c52dd275d4bf\b8477b67-f66f-4998-af5f-c52dd275d4bf_s3_denoised.wav
+[2026-03-16 00:24:07,971] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\b8477b67-f66f-4998-af5f-c52dd275d4bf\b8477b67-f66f-4998-af5f-c52dd275d4bf_s4_enhanced.wav
+[2026-03-16 00:24:07,973] INFO audio_pipeline: === Pipeline complete in 235.0s ===
+[2026-03-16 00:24:49,220] WARNING django.request: Not Found: /favicon.ico
+[2026-03-16 00:30:54,767] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-16 00:31:14,305] INFO audio_pipeline: === Starting pipeline for job 7f0c1df5-1e53-4f9f-8f97-78a6599e7435 ===
+[2026-03-16 00:31:14,306] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\7f0c1df5-1e53-4f9f-8f97-78a6599e7435.m4a
+[2026-03-16 00:31:14,379] INFO audio_pipeline: [7f0c1df5-1e53-4f9f-8f97-78a6599e7435] Stage 1: Extracting audio (5%) 
+[2026-03-16 00:31:14,684] INFO audio_pipeline: Using FFmpeg at: C:\ffmpeg\bin\ffmpeg.EXE
+[2026-03-16 00:31:14,685] INFO audio_pipeline: Extracting audio from: 7f0c1df5-1e53-4f9f-8f97-78a6599e7435.m4a
+[2026-03-16 00:31:17,134] INFO audio_pipeline: Audio extracted. Duration: 28.0s
+[2026-03-16 00:31:17,134] INFO audio_pipeline: [7f0c1df5-1e53-4f9f-8f97-78a6599e7435] Stage 1: Extracting audio (18%) Duration: 28.0s
+[2026-03-16 00:31:17,621] INFO audio_pipeline: [7f0c1df5-1e53-4f9f-8f97-78a6599e7435] Stage 2: Isolating voice (20%) 
+[2026-03-16 00:31:17,837] INFO audio_pipeline: Isolating voice from: 7f0c1df5-1e53-4f9f-8f97-78a6599e7435_s1_raw.wav
+[2026-03-16 00:31:20,278] INFO audio_pipeline: Running fast librosa HPSS
+[2026-03-16 00:32:03,872] INFO audio_pipeline: Librosa HPSS done
+[2026-03-16 00:32:03,881] INFO audio_pipeline: [7f0c1df5-1e53-4f9f-8f97-78a6599e7435] Stage 2: Isolating voice (38%) Method: librosa_hpss
+[2026-03-16 00:32:04,068] INFO audio_pipeline: [7f0c1df5-1e53-4f9f-8f97-78a6599e7435] Stage 3: Removing noise (40%) 
+[2026-03-16 00:32:04,260] INFO audio_pipeline: Applying noise reduction to: 7f0c1df5-1e53-4f9f-8f97-78a6599e7435_s2_isolated.wav
+[2026-03-16 00:32:04,262] WARNING audio_pipeline: DeepFilterNet failed: DeepFilterNet (df) not installed. Trying noisereduce...
+[2026-03-16 00:32:21,466] INFO audio_pipeline: Running noisereduce spectral subtraction
+[2026-03-16 00:32:23,830] INFO audio_pipeline: noisereduce spectral subtraction complete
+[2026-03-16 00:32:23,832] INFO audio_pipeline: [7f0c1df5-1e53-4f9f-8f97-78a6599e7435] Stage 3: Removing noise (58%) Method: noisereduce_spectral
+[2026-03-16 00:32:24,119] INFO audio_pipeline: [7f0c1df5-1e53-4f9f-8f97-78a6599e7435] Stage 4: Enhancing voice (60%) 
+[2026-03-16 00:32:24,338] INFO audio_pipeline: Enhancing voice quality: 7f0c1df5-1e53-4f9f-8f97-78a6599e7435_s3_denoised.wav
+[2026-03-16 00:32:29,286] INFO audio_pipeline: Running VoiceFixer (mode 0) on cpu
+[2026-03-16 00:34:20,895] INFO audio_pipeline: VoiceFixer enhancement complete
+[2026-03-16 00:34:20,896] INFO audio_pipeline: [7f0c1df5-1e53-4f9f-8f97-78a6599e7435] Stage 4: Enhancing voice (78%) Method: voicefixer_mode0
+[2026-03-16 00:34:21,075] INFO audio_pipeline: [7f0c1df5-1e53-4f9f-8f97-78a6599e7435] Stage 5: Mastering audio (80%) 
+[2026-03-16 00:34:21,299] INFO audio_pipeline: Mastering audio: 7f0c1df5-1e53-4f9f-8f97-78a6599e7435_s4_enhanced.wav
+[2026-03-16 00:34:21,347] INFO audio_pipeline: Applying EBU R128 mastering
+[2026-03-16 00:34:21,478] INFO audio_pipeline: Input loudness: -28.2 LUFS
+[2026-03-16 00:34:21,737] INFO audio_pipeline: Output loudness: -22.3 LUFS
+[2026-03-16 00:34:22,025] INFO audio_pipeline: EBU R128 mastering complete
+[2026-03-16 00:34:22,030] INFO audio_pipeline: [7f0c1df5-1e53-4f9f-8f97-78a6599e7435] Stage 5: Mastering audio (93%) Method: ebu_r128_mastering
+[2026-03-16 00:34:22,342] INFO audio_pipeline: [7f0c1df5-1e53-4f9f-8f97-78a6599e7435] Stage 6: Finalizing (97%) 
+[2026-03-16 00:34:22,742] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\7f0c1df5-1e53-4f9f-8f97-78a6599e7435\7f0c1df5-1e53-4f9f-8f97-78a6599e7435_s1_raw.wav
+[2026-03-16 00:34:22,744] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\7f0c1df5-1e53-4f9f-8f97-78a6599e7435\7f0c1df5-1e53-4f9f-8f97-78a6599e7435_s2_isolated.wav
+[2026-03-16 00:34:22,746] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\7f0c1df5-1e53-4f9f-8f97-78a6599e7435\7f0c1df5-1e53-4f9f-8f97-78a6599e7435_s3_denoised.wav
+[2026-03-16 00:34:23,060] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\7f0c1df5-1e53-4f9f-8f97-78a6599e7435\7f0c1df5-1e53-4f9f-8f97-78a6599e7435_s4_enhanced.wav
+[2026-03-16 00:34:23,061] INFO audio_pipeline: === Pipeline complete in 188.8s ===
+[2026-03-16 00:34:28,539] WARNING django.request: Not Found: /favicon.ico
+[2026-03-16 00:37:18,269] INFO django.utils.autoreload: C:\Users\thali\Documents\voice_studio_ai\audio_pipeline\audio_mastering.py changed, reloading.
+[2026-03-16 00:37:34,233] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-16 00:39:33,078] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-16 00:39:48,969] INFO audio_pipeline: === Starting pipeline for job 8e1801f5-e6a1-4292-89d4-254b66b3987a ===
+[2026-03-16 00:39:48,969] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\8e1801f5-e6a1-4292-89d4-254b66b3987a.m4a
+[2026-03-16 00:39:49,162] INFO audio_pipeline: [8e1801f5-e6a1-4292-89d4-254b66b3987a] Stage 1: Extracting audio (5%) 
+[2026-03-16 00:39:49,834] INFO audio_pipeline: Using FFmpeg at: C:\ffmpeg\bin\ffmpeg.EXE
+[2026-03-16 00:39:49,835] INFO audio_pipeline: Extracting audio from: 8e1801f5-e6a1-4292-89d4-254b66b3987a.m4a
+[2026-03-16 00:40:04,505] INFO audio_pipeline: Audio extracted. Duration: 28.0s
+[2026-03-16 00:40:04,505] INFO audio_pipeline: [8e1801f5-e6a1-4292-89d4-254b66b3987a] Stage 1: Extracting audio (18%) Duration: 28.0s
+[2026-03-16 00:40:04,829] INFO audio_pipeline: [8e1801f5-e6a1-4292-89d4-254b66b3987a] Stage 2: Isolating voice (20%) 
+[2026-03-16 00:40:05,095] INFO audio_pipeline: Isolating voice from: 8e1801f5-e6a1-4292-89d4-254b66b3987a_s1_raw.wav
+[2026-03-16 00:40:06,931] INFO audio_pipeline: Running fast librosa HPSS
+[2026-03-16 00:40:49,259] INFO audio_pipeline: Librosa HPSS done
+[2026-03-16 00:40:49,282] INFO audio_pipeline: [8e1801f5-e6a1-4292-89d4-254b66b3987a] Stage 2: Isolating voice (38%) Method: librosa_hpss
+[2026-03-16 00:40:49,729] INFO audio_pipeline: [8e1801f5-e6a1-4292-89d4-254b66b3987a] Stage 3: Removing noise (40%) 
+[2026-03-16 00:40:50,030] INFO audio_pipeline: Applying noise reduction to: 8e1801f5-e6a1-4292-89d4-254b66b3987a_s2_isolated.wav
+[2026-03-16 00:40:50,031] WARNING audio_pipeline: DeepFilterNet failed: DeepFilterNet (df) not installed. Trying noisereduce...
+[2026-03-16 00:41:05,331] INFO audio_pipeline: Running noisereduce spectral subtraction
+[2026-03-16 00:41:07,582] INFO audio_pipeline: noisereduce spectral subtraction complete
+[2026-03-16 00:41:07,584] INFO audio_pipeline: [8e1801f5-e6a1-4292-89d4-254b66b3987a] Stage 3: Removing noise (58%) Method: noisereduce_spectral
+[2026-03-16 00:41:07,844] INFO audio_pipeline: [8e1801f5-e6a1-4292-89d4-254b66b3987a] Stage 4: Enhancing voice (60%) 
+[2026-03-16 00:41:08,113] INFO audio_pipeline: Enhancing voice quality: 8e1801f5-e6a1-4292-89d4-254b66b3987a_s3_denoised.wav
+[2026-03-16 00:41:13,185] INFO audio_pipeline: Running VoiceFixer (mode 0) on cpu
+[2026-03-16 00:43:07,494] INFO audio_pipeline: VoiceFixer enhancement complete
+[2026-03-16 00:43:07,499] INFO audio_pipeline: [8e1801f5-e6a1-4292-89d4-254b66b3987a] Stage 4: Enhancing voice (78%) Method: voicefixer_mode0
+[2026-03-16 00:43:07,659] INFO audio_pipeline: [8e1801f5-e6a1-4292-89d4-254b66b3987a] Stage 5: Mastering audio (80%) 
+[2026-03-16 00:43:07,808] INFO audio_pipeline: Mastering audio: 8e1801f5-e6a1-4292-89d4-254b66b3987a_s4_enhanced.wav
+[2026-03-16 00:43:08,173] INFO audio_pipeline: Input loudness: -23.5 LUFS
+[2026-03-16 00:43:08,310] INFO audio_pipeline: Output loudness: -22.9 LUFS
+[2026-03-16 00:43:08,823] INFO audio_pipeline: Mastering complete - no clipping
+[2026-03-16 00:43:08,869] INFO audio_pipeline: [8e1801f5-e6a1-4292-89d4-254b66b3987a] Stage 5: Mastering audio (93%) Method: ebu_r128_mastering
+[2026-03-16 00:43:09,259] INFO audio_pipeline: [8e1801f5-e6a1-4292-89d4-254b66b3987a] Stage 6: Finalizing (97%) 
+[2026-03-16 00:43:09,485] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\8e1801f5-e6a1-4292-89d4-254b66b3987a\8e1801f5-e6a1-4292-89d4-254b66b3987a_s1_raw.wav
+[2026-03-16 00:43:09,486] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\8e1801f5-e6a1-4292-89d4-254b66b3987a\8e1801f5-e6a1-4292-89d4-254b66b3987a_s2_isolated.wav
+[2026-03-16 00:43:09,488] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\8e1801f5-e6a1-4292-89d4-254b66b3987a\8e1801f5-e6a1-4292-89d4-254b66b3987a_s3_denoised.wav
+[2026-03-16 00:43:09,625] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\8e1801f5-e6a1-4292-89d4-254b66b3987a\8e1801f5-e6a1-4292-89d4-254b66b3987a_s4_enhanced.wav
+[2026-03-16 00:43:09,627] INFO audio_pipeline: === Pipeline complete in 200.7s ===
+[2026-03-16 00:43:23,793] WARNING django.request: Not Found: /favicon.ico
+[2026-03-16 00:43:33,064] INFO django.utils.autoreload: C:\Users\thali\Documents\voice_studio_ai\audio_pipeline\audio_mastering.py changed, reloading.
+[2026-03-16 00:44:07,853] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-16 00:44:34,441] INFO audio_pipeline: === Starting pipeline for job 360a4dfb-7553-4b31-bac2-20ee3cc1afdd ===
+[2026-03-16 00:44:34,441] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\360a4dfb-7553-4b31-bac2-20ee3cc1afdd.m4a
+[2026-03-16 00:44:34,722] INFO audio_pipeline: [360a4dfb-7553-4b31-bac2-20ee3cc1afdd] Stage 1: Extracting audio (5%) 
+[2026-03-16 00:44:35,358] INFO audio_pipeline: Using FFmpeg at: C:\ffmpeg\bin\ffmpeg.EXE
+[2026-03-16 00:44:35,358] INFO audio_pipeline: Extracting audio from: 360a4dfb-7553-4b31-bac2-20ee3cc1afdd.m4a
+[2026-03-16 00:44:45,044] INFO audio_pipeline: Audio extracted. Duration: 28.0s
+[2026-03-16 00:44:45,044] INFO audio_pipeline: [360a4dfb-7553-4b31-bac2-20ee3cc1afdd] Stage 1: Extracting audio (18%) Duration: 28.0s
+[2026-03-16 00:44:45,570] INFO audio_pipeline: [360a4dfb-7553-4b31-bac2-20ee3cc1afdd] Stage 2: Isolating voice (20%) 
+[2026-03-16 00:44:46,143] INFO audio_pipeline: Isolating voice from: 360a4dfb-7553-4b31-bac2-20ee3cc1afdd_s1_raw.wav
+[2026-03-16 00:44:49,049] INFO audio_pipeline: Running fast librosa HPSS
+[2026-03-16 00:45:56,168] INFO audio_pipeline: Librosa HPSS done
+[2026-03-16 00:45:56,176] INFO audio_pipeline: [360a4dfb-7553-4b31-bac2-20ee3cc1afdd] Stage 2: Isolating voice (38%) Method: librosa_hpss
+[2026-03-16 00:45:56,578] INFO audio_pipeline: [360a4dfb-7553-4b31-bac2-20ee3cc1afdd] Stage 3: Removing noise (40%) 
+[2026-03-16 00:45:56,852] INFO audio_pipeline: Applying noise reduction to: 360a4dfb-7553-4b31-bac2-20ee3cc1afdd_s2_isolated.wav
+[2026-03-16 00:45:56,860] WARNING audio_pipeline: DeepFilterNet failed: DeepFilterNet (df) not installed. Trying noisereduce...
+[2026-03-16 00:46:16,307] INFO audio_pipeline: Running noisereduce spectral subtraction
+[2026-03-16 00:46:18,690] INFO audio_pipeline: noisereduce spectral subtraction complete
+[2026-03-16 00:46:18,692] INFO audio_pipeline: [360a4dfb-7553-4b31-bac2-20ee3cc1afdd] Stage 3: Removing noise (58%) Method: noisereduce_spectral
+[2026-03-16 00:46:18,976] INFO audio_pipeline: [360a4dfb-7553-4b31-bac2-20ee3cc1afdd] Stage 4: Enhancing voice (60%) 
+[2026-03-16 00:46:19,393] INFO audio_pipeline: Enhancing voice quality: 360a4dfb-7553-4b31-bac2-20ee3cc1afdd_s3_denoised.wav
+[2026-03-16 00:46:24,583] INFO audio_pipeline: Running VoiceFixer (mode 0) on cpu
+[2026-03-16 00:48:23,872] INFO audio_pipeline: VoiceFixer enhancement complete
+[2026-03-16 00:48:23,873] INFO audio_pipeline: [360a4dfb-7553-4b31-bac2-20ee3cc1afdd] Stage 4: Enhancing voice (78%) Method: voicefixer_mode0
+[2026-03-16 00:48:24,089] INFO audio_pipeline: [360a4dfb-7553-4b31-bac2-20ee3cc1afdd] Stage 5: Mastering audio (80%) 
+[2026-03-16 00:48:24,273] INFO audio_pipeline: Mastering audio: 360a4dfb-7553-4b31-bac2-20ee3cc1afdd_s4_enhanced.wav
+[2026-03-16 00:48:24,490] INFO audio_pipeline: Input loudness: -23.5 LUFS
+[2026-03-16 00:48:24,623] INFO audio_pipeline: Output loudness: -22.9 LUFS
+[2026-03-16 00:48:24,972] INFO audio_pipeline: Mastering complete - no clipping
+[2026-03-16 00:48:24,978] INFO audio_pipeline: [360a4dfb-7553-4b31-bac2-20ee3cc1afdd] Stage 5: Mastering audio (93%) Method: ebu_r128_mastering
+[2026-03-16 00:48:25,345] INFO audio_pipeline: [360a4dfb-7553-4b31-bac2-20ee3cc1afdd] Stage 6: Finalizing (97%) 
+[2026-03-16 00:48:25,601] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\360a4dfb-7553-4b31-bac2-20ee3cc1afdd\360a4dfb-7553-4b31-bac2-20ee3cc1afdd_s1_raw.wav
+[2026-03-16 00:48:25,603] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\360a4dfb-7553-4b31-bac2-20ee3cc1afdd\360a4dfb-7553-4b31-bac2-20ee3cc1afdd_s2_isolated.wav
+[2026-03-16 00:48:25,604] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\360a4dfb-7553-4b31-bac2-20ee3cc1afdd\360a4dfb-7553-4b31-bac2-20ee3cc1afdd_s3_denoised.wav
+[2026-03-16 00:48:25,606] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\360a4dfb-7553-4b31-bac2-20ee3cc1afdd\360a4dfb-7553-4b31-bac2-20ee3cc1afdd_s4_enhanced.wav
+[2026-03-16 00:48:25,607] INFO audio_pipeline: === Pipeline complete in 231.2s ===
+[2026-03-16 00:48:46,056] WARNING django.request: Not Found: /favicon.ico
+[2026-03-16 00:53:02,222] INFO django.utils.autoreload: C:\Users\thali\Documents\voice_studio_ai\audio_pipeline\audio_mastering.py changed, reloading.
+[2026-03-16 00:53:47,942] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-16 00:54:27,000] INFO audio_pipeline: === Starting pipeline for job b99d91f2-f9ef-45be-8675-40214f36feaf ===
+[2026-03-16 00:54:27,001] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\b99d91f2-f9ef-45be-8675-40214f36feaf.m4a
+[2026-03-16 00:54:27,187] INFO audio_pipeline: [b99d91f2-f9ef-45be-8675-40214f36feaf] Stage 1: Extracting audio (5%) 
+[2026-03-16 00:54:27,597] INFO audio_pipeline: Using FFmpeg at: C:\ffmpeg\bin\ffmpeg.EXE
+[2026-03-16 00:54:27,598] INFO audio_pipeline: Extracting audio from: b99d91f2-f9ef-45be-8675-40214f36feaf.m4a
+[2026-03-16 00:54:30,708] INFO audio_pipeline: Audio extracted. Duration: 28.0s
+[2026-03-16 00:54:30,713] INFO audio_pipeline: [b99d91f2-f9ef-45be-8675-40214f36feaf] Stage 1: Extracting audio (18%) Duration: 28.0s
+[2026-03-16 00:54:31,201] INFO audio_pipeline: [b99d91f2-f9ef-45be-8675-40214f36feaf] Stage 2: Isolating voice (20%) 
+[2026-03-16 00:54:31,491] INFO audio_pipeline: Isolating voice from: b99d91f2-f9ef-45be-8675-40214f36feaf_s1_raw.wav
+[2026-03-16 00:54:33,496] INFO audio_pipeline: Running fast librosa HPSS
+[2026-03-16 00:55:18,911] INFO audio_pipeline: Librosa HPSS done
+[2026-03-16 00:55:18,968] INFO audio_pipeline: [b99d91f2-f9ef-45be-8675-40214f36feaf] Stage 2: Isolating voice (38%) Method: librosa_hpss
+[2026-03-16 00:55:19,273] INFO audio_pipeline: [b99d91f2-f9ef-45be-8675-40214f36feaf] Stage 3: Removing noise (40%) 
+[2026-03-16 00:55:19,561] INFO audio_pipeline: Applying noise reduction to: b99d91f2-f9ef-45be-8675-40214f36feaf_s2_isolated.wav
+[2026-03-16 00:55:19,564] WARNING audio_pipeline: DeepFilterNet failed: DeepFilterNet (df) not installed. Trying noisereduce...
+[2026-03-16 00:55:44,122] INFO audio_pipeline: Running noisereduce spectral subtraction
+[2026-03-16 00:55:46,573] INFO audio_pipeline: noisereduce spectral subtraction complete
+[2026-03-16 00:55:46,575] INFO audio_pipeline: [b99d91f2-f9ef-45be-8675-40214f36feaf] Stage 3: Removing noise (58%) Method: noisereduce_spectral
+[2026-03-16 00:55:46,839] INFO audio_pipeline: [b99d91f2-f9ef-45be-8675-40214f36feaf] Stage 4: Enhancing voice (60%) 
+[2026-03-16 00:55:47,373] INFO audio_pipeline: Enhancing voice quality: b99d91f2-f9ef-45be-8675-40214f36feaf_s3_denoised.wav
+[2026-03-16 00:55:51,792] INFO audio_pipeline: Running VoiceFixer (mode 0) on cpu
+[2026-03-16 00:57:48,481] INFO audio_pipeline: VoiceFixer enhancement complete
+[2026-03-16 00:57:48,483] INFO audio_pipeline: [b99d91f2-f9ef-45be-8675-40214f36feaf] Stage 4: Enhancing voice (78%) Method: voicefixer_mode0
+[2026-03-16 00:57:48,806] INFO audio_pipeline: [b99d91f2-f9ef-45be-8675-40214f36feaf] Stage 5: Mastering audio (80%) 
+[2026-03-16 00:57:49,082] INFO audio_pipeline: Mastering audio: b99d91f2-f9ef-45be-8675-40214f36feaf_s4_enhanced.wav
+[2026-03-16 00:57:49,159] INFO audio_pipeline: Applied gain: 13.2 dB
+[2026-03-16 00:57:49,461] INFO audio_pipeline: Output loudness: ~-24.9 dBFS RMS
+[2026-03-16 00:57:49,724] INFO audio_pipeline: Mastering complete - no clipping
+[2026-03-16 00:57:49,730] INFO audio_pipeline: [b99d91f2-f9ef-45be-8675-40214f36feaf] Stage 5: Mastering audio (93%) Method: ebu_r128_mastering
+[2026-03-16 00:57:50,229] INFO audio_pipeline: [b99d91f2-f9ef-45be-8675-40214f36feaf] Stage 6: Finalizing (97%) 
+[2026-03-16 00:57:50,574] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\b99d91f2-f9ef-45be-8675-40214f36feaf\b99d91f2-f9ef-45be-8675-40214f36feaf_s1_raw.wav
+[2026-03-16 00:57:50,576] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\b99d91f2-f9ef-45be-8675-40214f36feaf\b99d91f2-f9ef-45be-8675-40214f36feaf_s2_isolated.wav
+[2026-03-16 00:57:50,578] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\b99d91f2-f9ef-45be-8675-40214f36feaf\b99d91f2-f9ef-45be-8675-40214f36feaf_s3_denoised.wav
+[2026-03-16 00:57:50,801] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\b99d91f2-f9ef-45be-8675-40214f36feaf\b99d91f2-f9ef-45be-8675-40214f36feaf_s4_enhanced.wav
+[2026-03-16 00:57:50,803] INFO audio_pipeline: === Pipeline complete in 203.8s ===
+[2026-03-16 00:57:59,936] WARNING django.request: Not Found: /favicon.ico
+[2026-03-16 00:59:38,437] INFO django.utils.autoreload: C:\Users\thali\Documents\voice_studio_ai\audio_pipeline\audio_mastering.py changed, reloading.
+[2026-03-16 01:00:02,515] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-16 01:00:23,434] INFO audio_pipeline: === Starting pipeline for job 09d1fe45-de9a-4210-aa0a-102fcdbfdcc8 ===
+[2026-03-16 01:00:23,435] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\09d1fe45-de9a-4210-aa0a-102fcdbfdcc8.m4a
+[2026-03-16 01:00:25,390] INFO audio_pipeline: [09d1fe45-de9a-4210-aa0a-102fcdbfdcc8] Stage 1: Extracting audio (5%) 
+[2026-03-16 01:00:26,000] INFO audio_pipeline: Using FFmpeg at: C:\ffmpeg\bin\ffmpeg.EXE
+[2026-03-16 01:00:26,000] INFO audio_pipeline: Extracting audio from: 09d1fe45-de9a-4210-aa0a-102fcdbfdcc8.m4a
+[2026-03-16 01:00:29,024] INFO audio_pipeline: Audio extracted. Duration: 28.0s
+[2026-03-16 01:00:29,026] INFO audio_pipeline: [09d1fe45-de9a-4210-aa0a-102fcdbfdcc8] Stage 1: Extracting audio (18%) Duration: 28.0s
+[2026-03-16 01:00:29,713] INFO audio_pipeline: [09d1fe45-de9a-4210-aa0a-102fcdbfdcc8] Stage 2: Isolating voice (20%) 
+[2026-03-16 01:00:29,924] INFO audio_pipeline: Isolating voice from: 09d1fe45-de9a-4210-aa0a-102fcdbfdcc8_s1_raw.wav
+[2026-03-16 01:00:31,796] INFO audio_pipeline: Running fast librosa HPSS
+[2026-03-16 01:01:22,703] INFO audio_pipeline: Librosa HPSS done
+[2026-03-16 01:01:22,727] INFO audio_pipeline: [09d1fe45-de9a-4210-aa0a-102fcdbfdcc8] Stage 2: Isolating voice (38%) Method: librosa_hpss
+[2026-03-16 01:01:23,073] INFO audio_pipeline: [09d1fe45-de9a-4210-aa0a-102fcdbfdcc8] Stage 3: Removing noise (40%) 
+[2026-03-16 01:01:23,306] INFO audio_pipeline: Applying noise reduction to: 09d1fe45-de9a-4210-aa0a-102fcdbfdcc8_s2_isolated.wav
+[2026-03-16 01:01:23,309] WARNING audio_pipeline: DeepFilterNet failed: DeepFilterNet (df) not installed. Trying noisereduce...
+[2026-03-16 01:01:47,449] INFO audio_pipeline: Running noisereduce spectral subtraction
+[2026-03-16 01:01:49,571] INFO audio_pipeline: noisereduce spectral subtraction complete
+[2026-03-16 01:01:49,576] INFO audio_pipeline: [09d1fe45-de9a-4210-aa0a-102fcdbfdcc8] Stage 3: Removing noise (58%) Method: noisereduce_spectral
+[2026-03-16 01:01:49,761] INFO audio_pipeline: [09d1fe45-de9a-4210-aa0a-102fcdbfdcc8] Stage 4: Enhancing voice (60%) 
+[2026-03-16 01:01:50,310] INFO audio_pipeline: Enhancing voice quality: 09d1fe45-de9a-4210-aa0a-102fcdbfdcc8_s3_denoised.wav
+[2026-03-16 01:01:55,297] INFO audio_pipeline: Running VoiceFixer (mode 0) on cpu
+[2026-03-16 01:03:46,773] INFO audio_pipeline: VoiceFixer enhancement complete
+[2026-03-16 01:03:46,774] INFO audio_pipeline: [09d1fe45-de9a-4210-aa0a-102fcdbfdcc8] Stage 4: Enhancing voice (78%) Method: voicefixer_mode0
+[2026-03-16 01:03:47,391] INFO audio_pipeline: [09d1fe45-de9a-4210-aa0a-102fcdbfdcc8] Stage 5: Mastering audio (80%) 
+[2026-03-16 01:03:48,088] INFO audio_pipeline: Mastering audio: 09d1fe45-de9a-4210-aa0a-102fcdbfdcc8_s4_enhanced.wav
+[2026-03-16 01:03:48,130] INFO audio_pipeline: Input peak: -5.2 dBFS
+[2026-03-16 01:03:48,656] INFO audio_pipeline: Applied gain: 18.3 dB
+[2026-03-16 01:03:48,673] INFO audio_pipeline: Limiter triggered: reduced by -8.9 dB
+[2026-03-16 01:03:48,688] INFO audio_pipeline: Output loudness: ~-22.9 dBFS RMS
+[2026-03-16 01:03:48,929] INFO audio_pipeline: Mastering complete
+[2026-03-16 01:03:48,933] INFO audio_pipeline: [09d1fe45-de9a-4210-aa0a-102fcdbfdcc8] Stage 5: Mastering audio (93%) Method: ebu_r128_mastering
+[2026-03-16 01:03:49,591] INFO audio_pipeline: [09d1fe45-de9a-4210-aa0a-102fcdbfdcc8] Stage 6: Finalizing (97%) 
+[2026-03-16 01:03:49,947] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\09d1fe45-de9a-4210-aa0a-102fcdbfdcc8\09d1fe45-de9a-4210-aa0a-102fcdbfdcc8_s1_raw.wav
+[2026-03-16 01:03:49,952] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\09d1fe45-de9a-4210-aa0a-102fcdbfdcc8\09d1fe45-de9a-4210-aa0a-102fcdbfdcc8_s2_isolated.wav
+[2026-03-16 01:03:49,955] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\09d1fe45-de9a-4210-aa0a-102fcdbfdcc8\09d1fe45-de9a-4210-aa0a-102fcdbfdcc8_s3_denoised.wav
+[2026-03-16 01:03:50,269] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\09d1fe45-de9a-4210-aa0a-102fcdbfdcc8\09d1fe45-de9a-4210-aa0a-102fcdbfdcc8_s4_enhanced.wav
+[2026-03-16 01:03:50,270] INFO audio_pipeline: === Pipeline complete in 206.8s ===
+[2026-03-16 01:04:02,237] WARNING django.request: Not Found: /favicon.ico
+[2026-03-16 01:04:51,224] INFO audio_pipeline: === Starting pipeline for job bf2f6992-47de-4319-9768-2ef9bb320dec ===
+[2026-03-16 01:04:51,226] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\bf2f6992-47de-4319-9768-2ef9bb320dec.mp4
+[2026-03-16 01:04:51,236] INFO audio_pipeline: [bf2f6992-47de-4319-9768-2ef9bb320dec] Stage 1: Extracting audio (5%) 
+[2026-03-16 01:04:51,689] INFO audio_pipeline: Using FFmpeg at: C:\ffmpeg\bin\ffmpeg.EXE
+[2026-03-16 01:04:51,689] INFO audio_pipeline: Extracting audio from: bf2f6992-47de-4319-9768-2ef9bb320dec.mp4
+[2026-03-16 01:04:58,922] INFO audio_pipeline: Audio extracted. Duration: 480.3s
+[2026-03-16 01:04:58,922] INFO audio_pipeline: [bf2f6992-47de-4319-9768-2ef9bb320dec] Stage 1: Extracting audio (18%) Duration: 480.3s
+[2026-03-16 01:04:59,307] INFO audio_pipeline: [bf2f6992-47de-4319-9768-2ef9bb320dec] Stage 2: Isolating voice (20%) 
+[2026-03-16 01:04:59,740] INFO audio_pipeline: Isolating voice from: bf2f6992-47de-4319-9768-2ef9bb320dec_s1_raw.wav
+[2026-03-16 01:04:59,741] INFO audio_pipeline: Running fast librosa HPSS
+[2026-03-16 01:06:52,460] INFO audio_pipeline: Librosa HPSS done
+[2026-03-16 01:06:52,816] INFO audio_pipeline: [bf2f6992-47de-4319-9768-2ef9bb320dec] Stage 2: Isolating voice (38%) Method: librosa_hpss
+[2026-03-16 01:06:53,826] INFO audio_pipeline: [bf2f6992-47de-4319-9768-2ef9bb320dec] Stage 3: Removing noise (40%) 
+[2026-03-16 01:06:54,292] INFO audio_pipeline: Applying noise reduction to: bf2f6992-47de-4319-9768-2ef9bb320dec_s2_isolated.wav
+[2026-03-16 01:06:55,828] WARNING audio_pipeline: DeepFilterNet failed: DeepFilterNet (df) not installed. Trying noisereduce...
+[2026-03-16 01:06:56,081] INFO audio_pipeline: Running noisereduce spectral subtraction
+[2026-03-16 01:07:27,309] INFO audio_pipeline: noisereduce spectral subtraction complete
+[2026-03-16 01:07:27,342] INFO audio_pipeline: [bf2f6992-47de-4319-9768-2ef9bb320dec] Stage 3: Removing noise (58%) Method: noisereduce_spectral
+[2026-03-16 01:07:27,672] INFO audio_pipeline: [bf2f6992-47de-4319-9768-2ef9bb320dec] Stage 4: Enhancing voice (60%) 
+[2026-03-16 01:07:28,057] INFO audio_pipeline: Enhancing voice quality: bf2f6992-47de-4319-9768-2ef9bb320dec_s3_denoised.wav
+[2026-03-16 01:07:28,267] INFO audio_pipeline: Running VoiceFixer (mode 0) on cpu
+[2026-03-16 01:34:00,736] INFO audio_pipeline: VoiceFixer enhancement complete
+[2026-03-16 01:34:01,175] INFO audio_pipeline: [bf2f6992-47de-4319-9768-2ef9bb320dec] Stage 4: Enhancing voice (78%) Method: voicefixer_mode0
+[2026-03-16 01:34:01,593] INFO audio_pipeline: [bf2f6992-47de-4319-9768-2ef9bb320dec] Stage 5: Mastering audio (80%) 
+[2026-03-16 01:34:02,382] INFO audio_pipeline: Mastering audio: bf2f6992-47de-4319-9768-2ef9bb320dec_s4_enhanced.wav
+[2026-03-16 01:34:03,189] INFO audio_pipeline: Input peak: -1.6 dBFS
+[2026-03-16 01:34:18,191] INFO audio_pipeline: Applied gain: 22.1 dB
+[2026-03-16 01:34:18,390] INFO audio_pipeline: Limiter triggered: reduced by -14.2 dB
+[2026-03-16 01:34:18,499] INFO audio_pipeline: Output loudness: ~-28.2 dBFS RMS
+[2026-03-16 01:34:37,213] INFO audio_pipeline: Mastering complete
+[2026-03-16 01:34:37,246] INFO audio_pipeline: [bf2f6992-47de-4319-9768-2ef9bb320dec] Stage 5: Mastering audio (93%) Method: ebu_r128_mastering
+[2026-03-16 01:34:38,309] INFO audio_pipeline: [bf2f6992-47de-4319-9768-2ef9bb320dec] Stage 6: Finalizing (97%) 
+[2026-03-16 01:34:40,896] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\bf2f6992-47de-4319-9768-2ef9bb320dec\bf2f6992-47de-4319-9768-2ef9bb320dec_s1_raw.wav
+[2026-03-16 01:34:42,984] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\bf2f6992-47de-4319-9768-2ef9bb320dec\bf2f6992-47de-4319-9768-2ef9bb320dec_s2_isolated.wav
+[2026-03-16 01:34:43,889] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\bf2f6992-47de-4319-9768-2ef9bb320dec\bf2f6992-47de-4319-9768-2ef9bb320dec_s3_denoised.wav
+[2026-03-16 01:35:07,100] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\bf2f6992-47de-4319-9768-2ef9bb320dec\bf2f6992-47de-4319-9768-2ef9bb320dec_s4_enhanced.wav
+[2026-03-16 01:35:07,555] INFO audio_pipeline: === Pipeline complete in 1816.0s ===
+[2026-03-16 01:35:31,138] WARNING django.request: Not Found: /favicon.ico
+[2026-03-16 01:37:58,927] INFO django.utils.autoreload: C:\Users\thali\Documents\voice_studio_ai\audio_pipeline\voice_enhancer.py changed, reloading.
+[2026-03-16 01:44:55,988] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-16 01:45:29,247] INFO audio_pipeline: === Starting pipeline for job 5f3c01b8-da3d-4c73-8df3-943a8216eb8b ===
+[2026-03-16 01:45:29,248] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\5f3c01b8-da3d-4c73-8df3-943a8216eb8b.m4a
+[2026-03-16 01:45:29,701] INFO audio_pipeline: [5f3c01b8-da3d-4c73-8df3-943a8216eb8b] Stage 1: Extracting audio (5%) 
+[2026-03-16 01:45:30,250] INFO audio_pipeline: Using FFmpeg at: C:\ffmpeg\bin\ffmpeg.EXE
+[2026-03-16 01:45:30,257] INFO audio_pipeline: Extracting audio from: 5f3c01b8-da3d-4c73-8df3-943a8216eb8b.m4a
+[2026-03-16 01:45:49,147] INFO audio_pipeline: Audio extracted. Duration: 28.0s
+[2026-03-16 01:45:49,147] INFO audio_pipeline: [5f3c01b8-da3d-4c73-8df3-943a8216eb8b] Stage 1: Extracting audio (18%) Duration: 28.0s
+[2026-03-16 01:45:49,669] INFO audio_pipeline: [5f3c01b8-da3d-4c73-8df3-943a8216eb8b] Stage 2: Isolating voice (20%) 
+[2026-03-16 01:45:49,870] INFO audio_pipeline: Isolating voice from: 5f3c01b8-da3d-4c73-8df3-943a8216eb8b_s1_raw.wav
+[2026-03-16 01:46:00,005] INFO audio_pipeline: Running fast librosa HPSS
+[2026-03-16 01:48:49,094] INFO audio_pipeline: Librosa HPSS done
+[2026-03-16 01:48:49,111] INFO audio_pipeline: [5f3c01b8-da3d-4c73-8df3-943a8216eb8b] Stage 2: Isolating voice (38%) Method: librosa_hpss
+[2026-03-16 01:48:49,381] INFO audio_pipeline: [5f3c01b8-da3d-4c73-8df3-943a8216eb8b] Stage 3: Removing noise (40%) 
+[2026-03-16 01:48:49,558] INFO audio_pipeline: Applying noise reduction to: 5f3c01b8-da3d-4c73-8df3-943a8216eb8b_s2_isolated.wav
+[2026-03-16 01:48:49,560] WARNING audio_pipeline: DeepFilterNet failed: DeepFilterNet (df) not installed. Trying noisereduce...
+[2026-03-16 01:48:49,561] WARNING audio_pipeline: Noise reduction libraries unavailable. Using scipy-based filtering...
+[2026-03-16 01:48:49,561] INFO audio_pipeline: Running scipy basic filtering
+[2026-03-16 01:48:50,178] INFO audio_pipeline: scipy basic filtering complete
+[2026-03-16 01:48:50,179] INFO audio_pipeline: [5f3c01b8-da3d-4c73-8df3-943a8216eb8b] Stage 3: Removing noise (58%) Method: scipy_basic_filter
+[2026-03-16 01:48:50,532] INFO audio_pipeline: [5f3c01b8-da3d-4c73-8df3-943a8216eb8b] Stage 4: Enhancing voice (60%) 
+[2026-03-16 01:48:50,837] INFO audio_pipeline: Enhancing voice quality: 5f3c01b8-da3d-4c73-8df3-943a8216eb8b_s3_denoised.wav
+[2026-03-16 01:48:51,291] INFO audio_pipeline: Pre-normalized to -18 dBFS peak
+[2026-03-16 01:50:07,529] INFO audio_pipeline: Running VoiceFixer (mode 0) on cpu
+[2026-03-16 01:53:08,180] INFO audio_pipeline: VoiceFixer enhancement complete
+[2026-03-16 01:53:08,183] INFO audio_pipeline: [5f3c01b8-da3d-4c73-8df3-943a8216eb8b] Stage 4: Enhancing voice (78%) Method: voicefixer_mode0
+[2026-03-16 01:53:08,588] INFO audio_pipeline: [5f3c01b8-da3d-4c73-8df3-943a8216eb8b] Stage 5: Mastering audio (80%) 
+[2026-03-16 01:53:08,887] INFO audio_pipeline: Mastering audio: 5f3c01b8-da3d-4c73-8df3-943a8216eb8b_s4_enhanced.wav
+[2026-03-16 01:53:11,080] INFO audio_pipeline: Applied gain: 18.1 dB
+[2026-03-16 01:53:11,147] INFO audio_pipeline: Soft limiter applied
+[2026-03-16 01:53:11,199] INFO audio_pipeline: Output loudness: ~-23.9 dBFS RMS
+[2026-03-16 01:53:11,625] INFO audio_pipeline: Mastering complete
+[2026-03-16 01:53:11,631] INFO audio_pipeline: [5f3c01b8-da3d-4c73-8df3-943a8216eb8b] Stage 5: Mastering audio (93%) Method: ebu_r128_mastering
+[2026-03-16 01:53:11,778] INFO audio_pipeline: [5f3c01b8-da3d-4c73-8df3-943a8216eb8b] Stage 6: Finalizing (97%) 
+[2026-03-16 01:53:11,956] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\5f3c01b8-da3d-4c73-8df3-943a8216eb8b\5f3c01b8-da3d-4c73-8df3-943a8216eb8b_s1_raw.wav
+[2026-03-16 01:53:11,958] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\5f3c01b8-da3d-4c73-8df3-943a8216eb8b\5f3c01b8-da3d-4c73-8df3-943a8216eb8b_s2_isolated.wav
+[2026-03-16 01:53:11,962] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\5f3c01b8-da3d-4c73-8df3-943a8216eb8b\5f3c01b8-da3d-4c73-8df3-943a8216eb8b_s3_denoised.wav
+[2026-03-16 01:53:11,965] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\5f3c01b8-da3d-4c73-8df3-943a8216eb8b\5f3c01b8-da3d-4c73-8df3-943a8216eb8b_s4_enhanced.wav
+[2026-03-16 01:53:11,967] INFO audio_pipeline: === Pipeline complete in 462.7s ===
+[2026-03-16 01:54:53,142] WARNING django.request: Not Found: /favicon.ico
+[2026-03-16 03:18:38,450] INFO django.utils.autoreload: Watching for file changes with StatReloader
+[2026-03-16 03:18:55,266] WARNING django.request: Not Found: /favicon.ico
+[2026-03-16 03:28:46,243] WARNING django.request: Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-03-16 03:32:22,741] INFO audio_pipeline: === Starting pipeline for job 0d540fd6-d7e9-44a5-9f5a-f57037860330 ===
+[2026-03-16 03:32:22,742] INFO audio_pipeline: Input: C:\Users\thali\Documents\voice_studio_ai\media\uploads\0d540fd6-d7e9-44a5-9f5a-f57037860330.m4a
+[2026-03-16 03:32:22,888] INFO audio_pipeline: [0d540fd6-d7e9-44a5-9f5a-f57037860330] Stage 1: Extracting audio (5%) 
+[2026-03-16 03:32:23,278] INFO audio_pipeline: Using FFmpeg at: C:\ffmpeg\bin\ffmpeg.EXE
+[2026-03-16 03:32:23,278] INFO audio_pipeline: Extracting audio from: 0d540fd6-d7e9-44a5-9f5a-f57037860330.m4a
+[2026-03-16 03:32:37,247] INFO audio_pipeline: Audio extracted. Duration: 28.0s
+[2026-03-16 03:32:37,247] INFO audio_pipeline: [0d540fd6-d7e9-44a5-9f5a-f57037860330] Stage 1: Extracting audio (18%) Duration: 28.0s
+[2026-03-16 03:32:37,393] INFO audio_pipeline: [0d540fd6-d7e9-44a5-9f5a-f57037860330] Stage 2: Isolating voice (20%) 
+[2026-03-16 03:32:37,614] INFO audio_pipeline: Isolating voice from: 0d540fd6-d7e9-44a5-9f5a-f57037860330_s1_raw.wav
+[2026-03-16 03:32:41,881] INFO audio_pipeline: Running fast librosa HPSS
+[2026-03-16 03:34:06,070] INFO audio_pipeline: Librosa HPSS done
+[2026-03-16 03:34:06,098] INFO audio_pipeline: [0d540fd6-d7e9-44a5-9f5a-f57037860330] Stage 2: Isolating voice (38%) Method: librosa_hpss
+[2026-03-16 03:34:06,381] INFO audio_pipeline: [0d540fd6-d7e9-44a5-9f5a-f57037860330] Stage 3: Removing noise (40%) 
+[2026-03-16 03:34:06,561] INFO audio_pipeline: Applying noise reduction to: 0d540fd6-d7e9-44a5-9f5a-f57037860330_s2_isolated.wav
+[2026-03-16 03:34:06,564] WARNING audio_pipeline: DeepFilterNet failed: DeepFilterNet (df) not installed. Trying noisereduce...
+[2026-03-16 03:34:06,567] WARNING audio_pipeline: Noise reduction libraries unavailable. Using scipy-based filtering...
+[2026-03-16 03:34:06,568] INFO audio_pipeline: Running scipy basic filtering
+[2026-03-16 03:34:07,149] INFO audio_pipeline: scipy basic filtering complete
+[2026-03-16 03:34:07,156] INFO audio_pipeline: [0d540fd6-d7e9-44a5-9f5a-f57037860330] Stage 3: Removing noise (58%) Method: scipy_basic_filter
+[2026-03-16 03:34:07,294] INFO audio_pipeline: [0d540fd6-d7e9-44a5-9f5a-f57037860330] Stage 4: Enhancing voice (60%) 
+[2026-03-16 03:34:07,483] INFO audio_pipeline: Enhancing voice quality: 0d540fd6-d7e9-44a5-9f5a-f57037860330_s3_denoised.wav
+[2026-03-16 03:34:07,873] INFO audio_pipeline: Pre-normalized to -18 dBFS peak
+[2026-03-16 03:34:32,878] INFO audio_pipeline: Running VoiceFixer (mode 0) on cpu
+[2026-03-16 03:37:22,223] INFO audio_pipeline: VoiceFixer enhancement complete
+[2026-03-16 03:37:22,298] INFO audio_pipeline: [0d540fd6-d7e9-44a5-9f5a-f57037860330] Stage 4: Enhancing voice (78%) Method: voicefixer_mode0
+[2026-03-16 03:37:22,676] INFO audio_pipeline: [0d540fd6-d7e9-44a5-9f5a-f57037860330] Stage 5: Mastering audio (80%) 
+[2026-03-16 03:37:23,115] INFO audio_pipeline: Mastering audio: 0d540fd6-d7e9-44a5-9f5a-f57037860330_s4_enhanced.wav
+[2026-03-16 03:37:24,760] INFO audio_pipeline: Applied gain: 18.1 dB
+[2026-03-16 03:37:24,832] INFO audio_pipeline: Soft limiter applied
+[2026-03-16 03:37:24,845] INFO audio_pipeline: Output loudness: ~-23.9 dBFS RMS
+[2026-03-16 03:37:25,698] INFO audio_pipeline: Mastering complete
+[2026-03-16 03:37:25,707] INFO audio_pipeline: [0d540fd6-d7e9-44a5-9f5a-f57037860330] Stage 5: Mastering audio (93%) Method: ebu_r128_mastering
+[2026-03-16 03:37:25,920] INFO audio_pipeline: [0d540fd6-d7e9-44a5-9f5a-f57037860330] Stage 6: Finalizing (97%) 
+[2026-03-16 03:37:26,270] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\0d540fd6-d7e9-44a5-9f5a-f57037860330\0d540fd6-d7e9-44a5-9f5a-f57037860330_s1_raw.wav
+[2026-03-16 03:37:26,340] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\0d540fd6-d7e9-44a5-9f5a-f57037860330\0d540fd6-d7e9-44a5-9f5a-f57037860330_s2_isolated.wav
+[2026-03-16 03:37:26,382] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\0d540fd6-d7e9-44a5-9f5a-f57037860330\0d540fd6-d7e9-44a5-9f5a-f57037860330_s3_denoised.wav
+[2026-03-16 03:37:26,387] DEBUG audio_pipeline: Cleaned up intermediate: C:\Users\thali\Documents\voice_studio_ai\media\processed\0d540fd6-d7e9-44a5-9f5a-f57037860330\0d540fd6-d7e9-44a5-9f5a-f57037860330_s4_enhanced.wav
+[2026-03-16 03:37:26,648] INFO audio_pipeline: === Pipeline complete in 303.8s ===

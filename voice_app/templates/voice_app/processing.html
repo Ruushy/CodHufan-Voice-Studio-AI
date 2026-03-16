@@ -1,0 +1,447 @@
+{% extends "voice_app/base.html" %}
+
+{% block title %}Hawlgalka — {{ job.original_filename }}{% endblock %}
+
+{% block extra_styles %}
+<style>
+  .processing-page {
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+  }
+
+  .processing-card {
+    max-width: 680px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* ── TOP STATUS ──────────────────────────────────────── */
+  .status-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .status-orb {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .status-orb.processing {
+    background: var(--accent-dim);
+    border: 1px solid rgba(0,212,255,0.25);
+    animation: orbPulse 2s infinite;
+  }
+
+  .status-orb.complete {
+    background: var(--green-dim);
+    border: 1px solid rgba(0,229,160,0.25);
+  }
+
+  .status-orb.failed {
+    background: var(--red-dim);
+    border: 1px solid rgba(255,77,109,0.25);
+  }
+
+  @keyframes orbPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,255,0.3); }
+    50% { box-shadow: 0 0 0 12px rgba(0,212,255,0); }
+  }
+
+  .status-info h1 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .status-info .file-label {
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-family: var(--font-mono);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 400px;
+  }
+
+  /* ── MAIN PROGRESS ───────────────────────────────────── */
+  .main-progress {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin-bottom: 20px;
+  }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .progress-stage-name {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .progress-pct {
+    font-family: var(--font-mono);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .main-progress-track {
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .main-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--green));
+    border-radius: 4px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .main-progress-fill.animated::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    animation: shimmer 1.8s infinite;
+  }
+
+  @keyframes shimmer {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(200%); }
+  }
+
+  /* ── STAGE STEPS ─────────────────────────────────────── */
+  .stages-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .stage-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    transition: background 0.2s;
+  }
+
+  .stage-item.active {
+    background: var(--accent-dim);
+    border: 1px solid rgba(0,212,255,0.15);
+  }
+
+  .stage-item.done {
+    opacity: 0.6;
+  }
+
+  .stage-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .stage-dot.pending {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+
+  .stage-dot.active {
+    background: var(--accent);
+    color: #000;
+    font-size: 14px;
+    animation: spinPulse 1.5s ease-in-out infinite;
+  }
+
+  .stage-dot.done {
+    background: var(--green-dim);
+    border: 1px solid rgba(0,229,160,0.3);
+    color: var(--green);
+  }
+
+  @keyframes spinPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); box-shadow: 0 0 12px rgba(0,212,255,0.5); }
+  }
+
+  .stage-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    flex: 1;
+  }
+
+  .stage-item.done .stage-label { color: var(--text-secondary); }
+
+  .stage-method {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .stage-item.active .stage-method { color: var(--accent); }
+
+  /* ── INFO FOOTER ─────────────────────────────────────── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .info-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+  }
+
+  .info-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .info-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  /* ── ERROR STATE ─────────────────────────────────────── */
+  .error-card {
+    background: var(--red-dim);
+    border: 1px solid rgba(255,77,109,0.25);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .error-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+
+  .error-detail {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(255,77,109,0.8);
+    line-height: 1.7;
+    word-break: break-all;
+  }
+
+  /* ── COMPLETE STATE ──────────────────────────────────── */
+  .complete-banner {
+    background: var(--green-dim);
+    border: 1px solid rgba(0,229,160,0.25);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .complete-banner h2 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .complete-banner p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="processing-page">
+  <div class="processing-card container">
+
+    <div class="status-header">
+      <div class="status-orb {% if job.status == 'complete' %}complete{% elif job.status == 'failed' %}failed{% else %}processing{% endif %}"
+           id="status-orb">
+        {% if job.status == 'complete' %}✓{% elif job.status == 'failed' %}✗{% else %}⟳{% endif %}
+      </div>
+      <div class="status-info">
+        <h1 id="status-title">
+          {% if job.status == 'complete' %}Hagaajintu way Dhammaatay
+          {% elif job.status == 'failed' %}Wuu Fashilmay
+          {% else %}Codkaaga Waa La Hagaajinayaa…
+          {% endif %}
+        </h1>
+        <div class="file-label">{{ job.original_filename }}</div>
+      </div>
+    </div>
+
+    <!-- Error state -->
+    {% if job.status == 'failed' %}
+    <div class="error-card" id="error-card">
+      <div class="error-title">⚠ Khalad ayaa dhacay</div>
+      <div class="error-detail">{{ job.error_message }}</div>
+    </div>
+    <a href="/" class="btn btn-secondary">← Isku Day Fayl Kale</a>
+
+    {% elif job.status == 'complete' %}
+    <!-- Complete state -->
+    <div class="complete-banner" id="complete-banner">
+      <h2>✦ Studio-Quality Waa La Gaadhaay</h2>
+      <p>Codkaaga waxaa lagu hawlgeliyay dhammaan 5 marxaladood ee AI.</p>
+      <a href="/job/{{ job.id }}/result/" class="btn btn-green">
+        ▶ Arag Natiijooyinka & Soo Dejiso
+      </a>
+    </div>
+
+    {% else %}
+    <!-- Processing state -->
+    <div class="main-progress" id="main-progress-card">
+      <div class="progress-header">
+        <span class="progress-stage-name" id="stage-name">{{ job.current_stage|default:"Initializing…" }}</span>
+        <span class="progress-pct" id="pct-display">{{ job.progress_percent }}%</span>
+      </div>
+      <div class="main-progress-track">
+        <div class="main-progress-fill animated" id="progress-fill" style="width: {{ job.progress_percent }}%"></div>
+      </div>
+      <ul class="stages-list" id="stages-list">
+        {% include "voice_app/_stage_list.html" with progress=job.progress_percent %}
+      </ul>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-label">Lambarka Shaqada</div>
+        <div class="info-value mono" style="font-size:11px;color:var(--text-secondary);">{{ job.id }}</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Faylka</div>
+        <div class="info-value" style="font-size:12px;">{{ job.original_filename|truncatechars:40 }}</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Cabbirka Faylka</div>
+        <div class="info-value">{{ job.file_size_mb|floatformat:1 }} MB</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Xaaladda</div>
+        <div class="info-value" id="status-badge">
+          <span class="badge badge-accent">Waa La Hawlgalinayaa</span>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+{% if job.status == 'processing' or job.status == 'pending' %}
+<script>
+const JOB_ID = "{{ job.id }}";
+const STAGES = [
+  { name: 'Codka waa lasoo saareeyaa',    icon: '📥', range: [0, 20] },
+  { name: 'Codka waa la kala soocayaa', icon: '🎵', range: [20, 40] },
+  { name: 'shucaaca waa laga saareeyaa', icon: '🔇', range: [40, 60] },
+  { name: 'Codka waa la hagaajinayaa',  icon: '✨', range: [60, 80] },
+  { name: 'Dhammaystirka codka',        icon: '🎛', range: [80, 100] },
+];
+
+function getStageState(stageName, stagePct, currentPct) {
+  if (currentPct >= stagePct[1]) return 'done';
+  if (currentPct >= stagePct[0]) return 'active';
+  return 'pending';
+}
+
+function renderStages(currentPct, currentName) {
+  const list = document.getElementById('stages-list');
+  list.innerHTML = STAGES.map((s, i) => {
+    const state = getStageState(currentName, s.range, currentPct);
+    const dotContent = state === 'done' ? '✓' : state === 'active' ? s.icon : (i + 1);
+    return `
+      <li class="stage-item ${state}">
+        <div class="stage-dot ${state}">${dotContent}</div>
+        <span class="stage-label">${s.name}</span>
+        ${state === 'active' ? '<span class="stage-method">Processing…</span>' : ''}
+        ${state === 'done' ? '<span class="stage-method">✓</span>' : ''}
+      </li>`;
+  }).join('');
+}
+
+async function poll() {
+  try {
+    const res = await fetch(`/api/job/${JOB_ID}/status/`);
+    const data = await res.json();
+
+    const fill = document.getElementById('progress-fill');
+    const pct = document.getElementById('pct-display');
+    const stageName = document.getElementById('stage-name');
+
+    if (fill) fill.style.width = data.progress_percent + '%';
+    if (pct) pct.textContent = data.progress_percent + '%';
+    if (stageName) stageName.textContent = data.current_stage || 'Processing…';
+
+    renderStages(data.progress_percent, data.current_stage || '');
+
+    if (data.status === 'complete' && data.result_url) {
+      setTimeout(() => window.location.href = data.result_url, 500);
+      return;
+    }
+    if (data.status === 'failed') {
+      window.location.reload();
+      return;
+    }
+    setTimeout(poll, 2000);
+  } catch (e) {
+    setTimeout(poll, 3000);
+  }
+}
+
+// Initial render and start polling
+renderStages({{ job.progress_percent }}, "{{ job.current_stage|escapejs }}");
+setTimeout(poll, 2000);
+</script>
+{% endif %}
+{% endblock %}
