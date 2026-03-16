@@ -7,7 +7,7 @@ set -e
 
 echo ""
 echo "╔════════════════════════════════════╗"
-echo "║   Voice Studio AI — Setup          ║"
+echo "║   Codhufan Voice Studio AI — Setup          ║"
 echo "╚════════════════════════════════════╝"
 echo ""
 
